@@ -1,0 +1,60 @@
+.App {
+  text-align: center;
+}
+
+$headHeight: 2rem;
+
+// header-s 
+
+header{
+	position: fixed;
+	width: 100%;
+	height: $headHeight;
+	background-color: rgb(228, 144, 144);
+	top:0
+
+}
+
+
+
+section{
+	margin-top: $headHeight;	
+}
+
+article{
+			display: flex;
+			justify-content: center;
+			margin:1rem 0;
+	div{
+		background-color: rgb(110, 240, 110);
+		max-width: 8rem;
+		padding: .5rem;
+		border-radius: 5px;
+
+	}
+
+}
+// FormComponent
+section>div:nth-child(1){
+	background-color: rgb(210, 182, 255);
+}
+
+form{
+	background-color: rgb(210, 238, 168);
+}
+
+.formButtons{
+	display: flex;
+	justify-content: center;
+
+	div{
+		border: 2px solid black ;
+		padding: 5px;
+		border-radius: 5px;
+		margin: 3px 1rem;
+		cursor: pointer;
+	}
+}
+
+// TableComponent
+
