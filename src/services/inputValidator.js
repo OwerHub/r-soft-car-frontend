@@ -16,9 +16,7 @@ const inputValidates = (value, iterator) => {
   if (type === "web") {
     try {
       new URL(value);
-    } catch (_) {
-      console.log("Nem valid url");
-    }
+    } catch (_) {}
   }
 
   if (type === "date") {
@@ -34,11 +32,7 @@ const inputValidates = (value, iterator) => {
       console.log("date too much");
       return "required";
     }
-    // console.log(dateToEpoch(1643760000000, true));
   }
-
-  /*   console.log("inputValidates");
-	console.log(type, required); */
 
   return value;
 };

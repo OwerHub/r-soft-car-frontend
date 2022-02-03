@@ -47,13 +47,10 @@ function App() {
     }
   };
 
-  console.log(isAllCars);
-
   useEffect(() => {
     if (localStorage.getItem("rsoft-carlist")) {
       buildUpProtocol();
     } else {
-      console.log("még nincs");
       fetchAllCarDatas();
     }
   }, []);
@@ -63,7 +60,6 @@ function App() {
     localStorage.setItem("rsoft-carlist", JSON.stringify([...isAllCars, object]));
   };
 
-  console.log(isAllCars);
   return (
     <div className="App">
       <header>Car Datas</header>
@@ -71,11 +67,15 @@ function App() {
         {isFormOpen && <FormComponent addNewCar={addNewCar} />}
 
         <article>
-          <div onClick={() => setFormOpen(!isFormOpen)}>Open Form</div>
+          <div onClick={() => setFormOpen(!isFormOpen)}>
+            ${isFormOpen ? "bezár" : "kinyit"}
+          </div>
         </article>
         {isAllCars && <TableComponent tableDatas={isAllCars} />}
       </section>
-      <div onClick={() => deleteLocalStorage()}>deleteStorage</div>
+      <div className="clearStorageButton" onClick={() => deleteLocalStorage()}>
+        dev: clear storage
+      </div>
     </div>
   );
 }

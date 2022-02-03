@@ -1,8 +1,18 @@
+
+
+$headHeight: 4rem;
+$colorBlue: #6699CC;
+$colorYellow:#FFF275;
+$colorOrange: #FF8C42;
+$colorRed:#FF3C38;
+$colorBrick:#A23E48;
+
 .App {
   text-align: center;
+	background-color: $colorOrange;
+	min-height: 100vh;
+	padding: 0 0 2rem;
 }
-
-$headHeight: 2rem;
 
 // header-s 
 
@@ -11,7 +21,12 @@ header{
 	width: 100%;
 	height: $headHeight;
 	background-color: rgb(228, 144, 144);
-	top:0
+	top:0;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	font-size:150% ;
+	font-weight: bolder;
 
 }
 
@@ -19,54 +34,113 @@ header{
 
 section{
 	margin-top: $headHeight;	
+	padding: 1rem 2rem;
 }
 
 article{
 			display: flex;
 			justify-content: center;
 			margin:1rem 0;
-	div{
+			div{
+		width: 8rem;
 		background-color: rgb(110, 240, 110);
-		max-width: 8rem;
 		padding: .5rem;
 		border-radius: 5px;
+		cursor: pointer;
 
 	}
 
 }
 // FormComponent
 section>div:nth-child(1){
-	background-color: rgb(210, 182, 255);
+	margin:2rem 0 0;
+	border-radius: 5px;
+	padding: .5rem;
+	background-color: $colorYellow;
 }
 
 
 .formButtons{
+	margin: 1rem .5rem .5rem;
 	display: flex;
 	justify-content: center;
 
-	.formButtonValid{
-		border: 2px solid black ;
+
+	.formbutton {
 		padding: 5px;
 		border-radius: 5px;
 		margin: 3px 1rem;
+		width: 8rem;
+		height: 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight:bolder;
+		text-transform: uppercase
+	}
+
+	.formButtonValid{
+		@extend .formbutton;
+		border: 2px solid black ;
+		background-color: darken($colorYellow, $amount: 30);
+		color: black;
+		
 		cursor: pointer;
 	}
 
 	.formButtonInvalid{
+		@extend .formbutton;
+		background-color: darken($colorYellow, $amount: 15);
 		border: 2px solid black ;
-		padding: 5px;
-		border-radius: 5px;
-		margin: 3px 1rem;
 		color:gray;
-
 	}
 
 }
 
+.formHead{
+	font-size: 130%;
+	font-weight: bold;
+}
+
+.inputField{
+	margin:.5rem 0 ;
+	div:first-child{
+		margin:2px;
+		font-weight: 600;
+	}
+}
 
 
 // TableComponent
 
+
+.table{
+	background-color: $colorBlue;
+	padding: .5rem .5rem 2rem;
+	border-radius: 10px;
+	div:first-child{
+		font-weight: 600;
+		font-size: 150%;
+		margin:.5rem 0 1rem;
+	}
+}
+
+
+table{
+	margin: 0 auto;
+	border: 2px solid black;
+	width: 90%;
+	padding: 1rem 0;
+}
+
+thead{
+	margin: 0 0 1rem;
+	border: 2px solid black
+}
+
+tbody{
+	padding: 1rem 0 0;
+}
 // modal
 .modalOut{
 	position: fixed;
@@ -120,5 +194,14 @@ section>div:nth-child(1){
 	}
 
 
+	}
+
+	.clearStorageButton{
+		margin: 0 auto;
+		background-color: $colorBrick;
+		width: 8rem;
+		padding: 1rem;
+		border-radius: 10px;
+		color: whitesmoke;
 
 	}

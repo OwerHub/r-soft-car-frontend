@@ -1,17 +1,26 @@
 .App {
   text-align: center;
+  background-color: #FF8C42;
+  min-height: 100vh;
+  padding: 0 0 2rem;
 }
 
 header {
   position: fixed;
   width: 100%;
-  height: 2rem;
+  height: 4rem;
   background-color: #e49090;
   top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+  font-weight: bolder;
 }
 
 section {
-  margin-top: 2rem;
+  margin-top: 4rem;
+  padding: 1rem 2rem;
 }
 
 article {
@@ -20,33 +29,87 @@ article {
   margin: 1rem 0;
 }
 article div {
+  width: 8rem;
   background-color: #6ef06e;
-  max-width: 8rem;
   padding: 0.5rem;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 section > div:nth-child(1) {
-  background-color: #d2b6ff;
+  margin: 2rem 0 0;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #FFF275;
 }
 
 .formButtons {
+  margin: 1rem 0.5rem 0.5rem;
   display: flex;
   justify-content: center;
 }
-.formButtons .formButtonValid {
-  border: 2px solid black;
+.formButtons .formbutton, .formButtons .formButtonInvalid, .formButtons .formButtonValid {
   padding: 5px;
   border-radius: 5px;
   margin: 3px 1rem;
+  width: 8rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.formButtons .formButtonValid {
+  border: 2px solid black;
+  background-color: #dbc600;
+  color: black;
   cursor: pointer;
 }
 .formButtons .formButtonInvalid {
+  background-color: #ffeb29;
   border: 2px solid black;
-  padding: 5px;
-  border-radius: 5px;
-  margin: 3px 1rem;
   color: gray;
+}
+
+.formHead {
+  font-size: 130%;
+  font-weight: bold;
+}
+
+.inputField {
+  margin: 0.5rem 0;
+}
+.inputField div:first-child {
+  margin: 2px;
+  font-weight: 600;
+}
+
+.table {
+  background-color: #6699CC;
+  padding: 0.5rem 0.5rem 2rem;
+  border-radius: 10px;
+}
+.table div:first-child {
+  font-weight: 600;
+  font-size: 150%;
+  margin: 0.5rem 0 1rem;
+}
+
+table {
+  margin: 0 auto;
+  border: 2px solid black;
+  width: 90%;
+  padding: 1rem 0;
+}
+
+thead {
+  margin: 0 0 1rem;
+  border: 2px solid black;
+}
+
+tbody {
+  padding: 1rem 0 0;
 }
 
 .modalOut {
@@ -95,4 +158,13 @@ section > div:nth-child(1) {
 .modalInFail div div:nth-child(2) {
   margin: 0.5rem 0 0;
   font-size: 1 rem;
+}
+
+.clearStorageButton {
+  margin: 0 auto;
+  background-color: #A23E48;
+  width: 8rem;
+  padding: 1rem;
+  border-radius: 10px;
+  color: whitesmoke;
 }

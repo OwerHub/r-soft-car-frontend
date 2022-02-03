@@ -79,13 +79,13 @@ const FormComponent = (props) => {
   }, [isCarDatas]);
 
   return (
-    <div>
-      FormKomponent
+    <div className="formOut">
+      <div className="formHead">Kérem az Adatokat</div>
       <div className="form">
         {isCarDatas &&
           datastructure &&
           datastructure.map((data, iterator) => (
-            <div key={`fi${iterator}`}>
+            <div className="inputField" key={`fi${iterator}`}>
               <div>{data[1]}</div>
 
               <input
@@ -103,7 +103,6 @@ const FormComponent = (props) => {
             </div>
           ))}
       </div>
-      <div>átmeneti: {isValid ? "gomb valid" : "gomb nem valid"}</div>
       <div className="formButtons">
         <div className="formButtonValid" onClick={() => setInputToDefault()}>
           alaphelyzet

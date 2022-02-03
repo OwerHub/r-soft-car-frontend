@@ -3,11 +3,9 @@ import dateToEpoch from "../services/dateToEpoch";
 import datastructure from "../datas/datastructure.json";
 
 const TableComponent = (props) => {
-  const [isCarList, setCarlist] = useState([]);
+  //const [isCarList, setCarlist] = useState([]);
   const [isTypesHead, setTypesHead] = useState([]);
   const [isTypesName, setTypesName] = useState([]);
-
-  console.log(props.tableDatas);
 
   const epochStamp = (date) => {
     const chopped = date.toString().substring(0, 8);
@@ -34,8 +32,8 @@ const TableComponent = (props) => {
 
   return (
     <div>
-      TableComponent
       <div className="table">
+        <div className="tableHead">Autók listája</div>
         {isTypesName && isTypesHead && (
           <table>
             <thead>
@@ -45,6 +43,7 @@ const TableComponent = (props) => {
                 ))}
               </tr>
             </thead>
+
             <tbody>
               {props.tableDatas.map((car, iterator) => (
                 <tr key={`tc${iterator}`}>
