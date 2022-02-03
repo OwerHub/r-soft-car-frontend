@@ -48,3 +48,51 @@ section > div:nth-child(1) {
   margin: 3px 1rem;
   color: gray;
 }
+
+.modalOut {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalIn, .modalInFail, .modalInSuccess {
+  top: 20vh;
+  height: 30vh;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.modalInSuccess {
+  border: 3px solid green;
+}
+.modalInSuccess div {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: green;
+}
+
+.modalInFail {
+  border: 3px solid red;
+}
+.modalInFail div {
+  text-transform: uppercase;
+  color: red;
+}
+.modalInFail div div:first-child {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.modalInFail div div:nth-child(2) {
+  margin: 0.5rem 0 0;
+  font-size: 1 rem;
+}

@@ -1,14 +1,14 @@
 const dateToEpoch = (date, reverse = false) => {
-  //console.log("epochFunct", date);
   if (reverse) {
-    let time = new Date(date * 1000).toLocaleDateString("en-US").replace(/\//g, "-");
-
+    const a = new Date(date * 1000);
+    const time = a.getDate() + "-" + a.getMonth() + "-" + a.getFullYear();
     return time;
   } else {
-    return new Date(date).getTime();
+    const array = date.split("-");
+    const d = new Date(`${array[0]}/${array[1]}/${array[2]}`);
+    const time = d.getTime() / 1000;
+    return time;
   }
-
-  //console.log(dateEpoch);
 };
 
 export default dateToEpoch;

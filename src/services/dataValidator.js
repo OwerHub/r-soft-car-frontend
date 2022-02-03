@@ -26,23 +26,21 @@ const dataValidatorByTypes = (data, type, require) => {
         }
         break;
 
-      case "date": // elkészíteni
-        console.log("dateData:", data);
+      case "date":
         response = data;
         break;
 
-      case "web": // elkészíteni
-        console.log("web is ", data.length);
-
+      case "web":
         if (data) {
-          console.log("belement");
           let url;
           try {
             url = new URL(data);
           } catch (_) {
             errors.push("nem valid webcím");
-            console.log("Nem valid url");
           }
+        }
+        if (data.length === 0) {
+          data = "n.a";
         }
         response = data;
         break;

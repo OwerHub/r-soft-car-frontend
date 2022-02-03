@@ -1,49 +1,65 @@
 import { useState, useEffect } from "react";
+import dateToEpoch from "../services/dateToEpoch";
+import datastructure from "../datas/datastructure.json";
 
 const TableComponent = (props) => {
   const [isCarList, setCarlist] = useState([]);
-
-  /*  useEffect(() => {
-    setCarlist(props.tableDatas);
-    console.log("iscarlist", isCarList.length);
-  }, [props.tableDatas]); */
+  const [isTypesHead, setTypesHead] = useState([]);
+  const [isTypesName, setTypesName] = useState([]);
 
   console.log(props.tableDatas);
 
-  const typesTemp = [
-    "manufacturer",
-    "model",
-    "engine-capacity",
-    "color",
-    "version",
-    "date-of-manufakture",
-    "manufacturer-webpage",
-  ];
+  const epochStamp = (date) => {
+    const chopped = date.toString().substring(0, 8);
+    /*     console.log("chopped is", chopped); */
+    const translatedDate = dateToEpoch(chopped, true);
 
-  /// ---- map elé ellenőrizni
+    return translatedDate;
+  };
+
+  const createTypes = () => {
+    let typesHead = [];
+    let typesNames = [];
+    datastructure.forEach((element) => {
+      typesHead.push(element[1]);
+      typesNames.push(element[0]);
+    });
+    setTypesHead(typesHead);
+    setTypesName(typesNames);
+  };
+
+  useEffect(() => {
+    console.log(createTypes());
+  }, []);
 
   return (
     <div>
       TableComponent
       <div className="table">
-        <table>
-          <thead>
-            <tr>
-              {typesTemp.map((data, iterator) => (
-                <th key={iterator}>{data}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {props.tableDatas.map((car, iterator) => (
-              <tr key={`tc${iterator}`}>
-                {typesTemp.map((dataType, iterator2) => (
-                  <td key={`td${iterator2}`}>{car[dataType]}</td>
+        {isTypesName && isTypesHead && (
+          <table>
+            <thead>
+              <tr>
+                {isTypesHead.map((data, iterator) => (
+                  <th key={iterator}>{data}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {props.tableDatas.map((car, iterator) => (
+                <tr key={`tc${iterator}`}>
+                  {isTypesName.map((dataType, iterator2) => (
+                    <td key={`td${iterator2}`}>
+                      {dataType === "date-of-manufakture"
+                        ? dateToEpoch(car[dataType], true)
+                        : car[dataType]}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

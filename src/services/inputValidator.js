@@ -22,11 +22,13 @@ const inputValidates = (value, iterator) => {
   }
 
   if (type === "date") {
+    console.log("timevalue", value);
     const inputDate = dateToEpoch(value);
     const currentDate = Date.now();
 
-    if (currentDate > inputDate) {
+    if (currentDate >= inputDate) {
       console.log("date Okay");
+
       return inputDate;
     } else {
       console.log("date too much");
