@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { carDataValidator, datastructure } from "../datas/datastucture";
+import { carDataValidator } from "../services/dataValidator";
+import dateToEpoch from "../services/dateToEpoch";
+import datastructure from "../datas/datastructure.json";
 
 const FormComponent = (props) => {
   const [isValid, setValid] = useState(false);
@@ -8,11 +10,12 @@ const FormComponent = (props) => {
   // kiszervezni
 
   //-------date
-  const dateToEpoch = (date, reverse = false) => {
+  /*  const dateToEpoch = (date, reverse = false) => {
     //console.log("epochFunct", date);
     if (reverse) {
-      let time = new Date(date * 1000).toLocaleDateString("en-US");
-      //.replace(`/ /g`, "-");
+      let time = new Date(date * 1000)
+        .toLocaleDateString("en-US")
+        .replace(/\//g, "-");
 
       return time;
     } else {
@@ -20,23 +23,13 @@ const FormComponent = (props) => {
     }
 
     //console.log(dateEpoch);
-  };
+  }; */
 
-  //---
-
-  const inputs = [
-    ["Gyártó", "text", true, "text"],
-    ["Típus", "text", true, "text"],
-    ["Hengerűrtartalom", "number", true, "number"],
-    ["Szín", "text", false, "text"],
-    ["Kiwitel", "text", false, "text"],
-    ["Gyártási időpont", "date", true, "date"],
-    ["Gyártó Weboldala", "text", false, "web"],
-  ];
+  //----
 
   const inputValidates = (value, iterator) => {
-    const type = inputs[iterator][3];
-    const required = inputs[iterator][2];
+    const type = datastructure[iterator][4];
+    const required = datastructure[iterator][3];
 
     if (required & (value.length === 0)) {
       return "required";
@@ -97,10 +90,11 @@ const FormComponent = (props) => {
     setCarDatas(tempArray);
     //console.log(isCarDatas);
   };
+
   const setInputToDefault = () => {
     let defaultDatas = [];
-    inputs.forEach((element) => {
-      defaultDatas.push(element[2] ? "required" : "");
+    datastructure.forEach((element) => {
+      defaultDatas.push(element[3] ? "required" : "");
     });
     setCarDatas(defaultDatas);
   };
@@ -108,7 +102,7 @@ const FormComponent = (props) => {
   const datasToObject = (dataArray) => {
     let object = {};
     dataArray.map((data, iterator) => {
-      object[datastructure[iterator][1]] = data;
+      object[datastructure[iterator][0]] = data;
     });
 
     return object;
@@ -132,6 +126,7 @@ const FormComponent = (props) => {
 
   useEffect(() => {
     setInputToDefault();
+    console.log("timereverse", dateToEpoch("1643860138", true));
   }, []);
 
   useEffect(() => {
@@ -145,15 +140,16 @@ const FormComponent = (props) => {
       FormKomponent
       <div className="form">
         {isCarDatas &&
-          inputs.map((data, iterator) => (
+          datastructure &&
+          datastructure.map((data, iterator) => (
             <div key={`fi${iterator}`}>
-              <div>{data[0]}</div>
+              <div>{data[1]}</div>
               <input
-                type={data[1]}
-                placeholder={data[2] ? "required" : ""}
+                type={data[2]}
+                placeholder={data[3] ? "required" : ""}
                 onChange={(e) => inputChange(e.target, iterator)}
                 value={
-                  data[2] && isCarDatas[iterator] === "required"
+                  data[3] && isCarDatas[iterator] === "required"
                     ? ""
                     : isCarDatas[iterator]
                 }

@@ -49,6 +49,7 @@ function App() {
     setAllCars(array);
   };
 
+  console.log(isAllCars);
   return (
     <div className="App">
       <header>Car Datas</header>

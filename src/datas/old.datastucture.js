@@ -30,6 +30,18 @@ const dataValidatorByTypes = (data, type, require) => {
         break;
 
       case "web": // elkészíteni
+        console.log("web is ", data.length);
+
+        if (data) {
+          console.log("belement");
+          let url;
+          try {
+            url = new URL(data);
+          } catch (_) {
+            errors.push("nem valid webcím");
+            console.log("Nem valid url");
+          }
+        }
         response = data;
         break;
 
@@ -71,5 +83,5 @@ const carDataValidator = (dataArray) => {
 
   return [responseArray, errorArray.flat()];
 };
-
-export { carDataValidator, datastructure };
+/* 
+export { carDataValidator, datastructure, dataValidatorByTypes }; */

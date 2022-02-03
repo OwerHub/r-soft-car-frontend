@@ -1,4 +1,13 @@
+import { useState, useEffect } from "react";
+
 const TableComponent = (props) => {
+  const [isCarList, setCarlist] = useState([]);
+
+  /*  useEffect(() => {
+    setCarlist(props.tableDatas);
+    console.log("iscarlist", isCarList.length);
+  }, [props.tableDatas]); */
+
   console.log(props.tableDatas);
 
   const typesTemp = [
@@ -10,6 +19,8 @@ const TableComponent = (props) => {
     "date-of-manufakture",
     "manufacturer-webpage",
   ];
+
+  /// ---- map elé ellenőrizni
 
   return (
     <div>

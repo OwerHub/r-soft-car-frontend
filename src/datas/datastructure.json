@@ -1,0 +1,9 @@
+[
+	["manufacturer", "Gyártó", "text", true, "text"],
+	["model", "Típus", "text", true, "text"],
+	["engine-capacity", "Hengerűrtartalom", "number", true, "number"],
+	["color", "Szín", "text", false, "text"],
+	["version", "Kiwitel", "text", false, "text"],
+	["date-of-manufakture", "Gyártási időpont", "date", true, "date"],
+	["manufacturer-webpage", "Gyártó Weboldala", "text", false, "web"]
+]

@@ -1,4 +1,4 @@
-import { datastructure } from "../datas/datastucture";
+import datastructure from "../datas/datastructure.json";
 
 const dataValidatorByTypes = (data, type, require) => {
   let errors = [];
@@ -18,7 +18,7 @@ const dataValidatorByTypes = (data, type, require) => {
         break;
 
       case "number":
-        if (!new RegExp("^[0-9]*$").test(data)) {
+        if (new RegExp("^[0-9]*$").test(data)) {
           response = data;
         } else {
           response = 0;
@@ -27,10 +27,23 @@ const dataValidatorByTypes = (data, type, require) => {
         break;
 
       case "date": // elkészíteni
+        console.log("dateData:", data);
         response = data;
         break;
 
       case "web": // elkészíteni
+        console.log("web is ", data.length);
+
+        if (data) {
+          console.log("belement");
+          let url;
+          try {
+            url = new URL(data);
+          } catch (_) {
+            errors.push("nem valid webcím");
+            console.log("Nem valid url");
+          }
+        }
         response = data;
         break;
 
@@ -43,6 +56,8 @@ const dataValidatorByTypes = (data, type, require) => {
 
   return [response, errors];
 };
+
+// dataname, Name, input type, required, validation type
 
 const carDataValidator = (dataArray) => {
   let responseArray = [];
@@ -62,4 +77,4 @@ const carDataValidator = (dataArray) => {
   return [responseArray, errorArray.flat()];
 };
 
-export { carDataValidator };
+export { carDataValidator, dataValidatorByTypes };
