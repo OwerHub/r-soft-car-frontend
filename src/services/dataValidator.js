@@ -1,3 +1,5 @@
+import { datastructure } from "../datas/datastucture";
+
 const dataValidatorByTypes = (data, type, require) => {
   let errors = [];
   let response;
@@ -16,7 +18,7 @@ const dataValidatorByTypes = (data, type, require) => {
         break;
 
       case "number":
-        if (new RegExp("^[0-9]*$").test(data)) {
+        if (!new RegExp("^[0-9]*$").test(data)) {
           response = data;
         } else {
           response = 0;
@@ -25,7 +27,6 @@ const dataValidatorByTypes = (data, type, require) => {
         break;
 
       case "date": // elkészíteni
-        console.log("dateData:", data);
         response = data;
         break;
 
@@ -42,17 +43,6 @@ const dataValidatorByTypes = (data, type, require) => {
 
   return [response, errors];
 };
-
-// dataname, Name, input type, required, validation type
-const datastructure = [
-  ["manufacturer", "Gyártó", "text", true, "text"],
-  ["model", "Típus", "text", true, "text"],
-  ["engine-capacity", "Hengerűrtartalom", "number", true, "number"],
-  ["color", "Szín", "text", false, "text"],
-  ["version", "Kiwitel", "text", false, "text"],
-  ["date-of-manufakture", "Gyártási időpont", "date", true, "date"],
-  ["manufacturer-webpage", "Gyártó Weboldala", "text", false, "web"],
-];
 
 const carDataValidator = (dataArray) => {
   let responseArray = [];
@@ -72,4 +62,4 @@ const carDataValidator = (dataArray) => {
   return [responseArray, errorArray.flat()];
 };
 
-export { carDataValidator, datastructure };
+export { carDataValidator };

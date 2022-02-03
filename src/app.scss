@@ -39,22 +39,31 @@ section>div:nth-child(1){
 	background-color: rgb(210, 182, 255);
 }
 
-form{
-	background-color: rgb(210, 238, 168);
-}
 
 .formButtons{
 	display: flex;
 	justify-content: center;
 
-	div{
+	.formButtonValid{
 		border: 2px solid black ;
 		padding: 5px;
 		border-radius: 5px;
 		margin: 3px 1rem;
 		cursor: pointer;
 	}
+
+	.formButtonInvalid{
+		border: 2px solid black ;
+		padding: 5px;
+		border-radius: 5px;
+		margin: 3px 1rem;
+		color:gray;
+
+	}
+
 }
+
+
 
 // TableComponent
 

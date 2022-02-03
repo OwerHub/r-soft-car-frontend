@@ -4,16 +4,13 @@ import { carDataValidator } from "../datas/datastucture";
 const FormComponent = () => {
   const [isValid, setValid] = useState(false);
   const [isCarDatas, setCarDatas] = useState([]);
-  const [isTry, setTry] = useState(["sdad", "asdasd"]);
 
   const arrayValidator = (array) => {
-    //console.log("array = ", array);
+    console.log("array = ", array);
     if (array.includes("required")) {
       setValid(false);
-      // console.log("nem valid");
     } else {
       setValid(true);
-      // console.log("valid");
     }
   };
 
@@ -25,11 +22,17 @@ const FormComponent = () => {
   };
 
   const validates = {
-    types: (e, iterator) => {
-      // console.log("types", e.value);
-      setDatasInArray(e.value, iterator);
+    text: (e, iterator) => {
+      let response;
+      if (e.value.length === 0) {
+        response = "required";
+      } else {
+        response = e.value;
+      }
+      setDatasInArray(response, iterator);
       return e.value;
     },
+
     numbers: (e, iterator) => {
       if (e.value) {
         // console.log("numbers: ", e.value);
@@ -42,13 +45,13 @@ const FormComponent = () => {
   };
 
   const inputs = [
-    ["Gyártó", "text", true, validates.types],
-    ["Típus", "text", true, validates.types],
+    ["Gyártó", "text", true, validates.text],
+    ["Típus", "text", true, validates.text],
     ["Hengerűrtartalom", "number", true, validates.numbers],
-    ["Szín", "text", false, validates.types],
-    ["Kiwitel", "text", false, validates.types],
-    ["Gyártási időpont", "date", true, validates.types],
-    ["Gyártó Weboldala", "text", false, validates.types],
+    ["Szín", "text", false, validates.text],
+    ["Kiwitel", "text", false, validates.text],
+    ["Gyártási időpont", "date", true, validates.text],
+    ["Gyártó Weboldala", "text", false, validates.text],
   ];
 
   const setInputToDefault = () => {
@@ -96,31 +99,19 @@ const FormComponent = () => {
                     ? ""
                     : isCarDatas[iterator]
                 }
-                /*  value={data[2] ? "" : isCarDatas[iterator]} */
-                /*  onChange={(e) => {
-                  let tryValue = [...isTry];
-                  tryValue[1] = e.target.value;
-                  console.log(tryValue);
-                  setTry(tryValue);
-                }}
-                value={isTry[1]} */
               />
-
-              {/* <div>
-                data
-                {data[2] && isCarDatas[iterator] === "required"
-                  ? ""
-                  : isCarDatas[iterator]}
-              </div> */}
             </div>
           ))}
       </div>
       <div>átmeneti: {isValid ? "gomb valid" : "gomb nem valid"}</div>
       <div className="formButtons">
-        <div className="formButton" onClick={() => setInputToDefault()}>
+        <div className="formButtonValid" onClick={() => setInputToDefault()}>
           alaphelyzet
         </div>
-        <div className="formButton" onClick={() => sendDatas()}>
+        <div
+          className={isValid ? "formButtonValid" : "formButtonInvalid"}
+          onClick={() => sendDatas()}
+        >
           Mentés
         </div>
       </div>

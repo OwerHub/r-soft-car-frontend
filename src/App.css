@@ -30,18 +30,21 @@ section > div:nth-child(1) {
   background-color: #d2b6ff;
 }
 
-form {
-  background-color: #d2eea8;
-}
-
 .formButtons {
   display: flex;
   justify-content: center;
 }
-.formButtons div {
+.formButtons .formButtonValid {
   border: 2px solid black;
   padding: 5px;
   border-radius: 5px;
   margin: 3px 1rem;
   cursor: pointer;
+}
+.formButtons .formButtonInvalid {
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 3px 1rem;
+  color: gray;
 }
