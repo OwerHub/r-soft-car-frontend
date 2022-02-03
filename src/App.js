@@ -9,10 +9,6 @@ function App() {
   const [isAllCars, setAllCars] = useState([]);
 
   const fetchAllCarDatas = async () => {
-    const fetchHeaders = {
-      "Content-Type": "application/json",
-    };
-
     fetch("http://localhost:8000/carDatas", {
       method: "GET",
       mode: "cors",
@@ -39,14 +35,8 @@ function App() {
     }
   }, []);
 
-  //console.log(isAllCars);
   const addNewCar = (object) => {
-    console.log("addnewCar");
-
-    const array = [...isAllCars];
-    array.push(object);
-    console.log(array);
-    setAllCars(array);
+    setAllCars([...isAllCars, object]);
   };
 
   console.log(isAllCars);

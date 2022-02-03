@@ -14,9 +14,8 @@ const inputValidates = (value, iterator) => {
   }
 
   if (type === "web") {
-    let url;
     try {
-      url = new URL(value);
+      new URL(value);
     } catch (_) {
       console.log("Nem valid url");
     }
@@ -25,6 +24,7 @@ const inputValidates = (value, iterator) => {
   if (type === "date") {
     const inputDate = dateToEpoch(value);
     const currentDate = Date.now();
+
     if (currentDate > inputDate) {
       console.log("date Okay");
       return inputDate;
@@ -40,3 +40,5 @@ const inputValidates = (value, iterator) => {
 
   return value;
 };
+
+export default inputValidates;
