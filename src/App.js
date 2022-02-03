@@ -40,12 +40,20 @@ function App() {
   }, []);
 
   //console.log(isAllCars);
+  const addNewCar = (object) => {
+    console.log("addnewCar");
+
+    const array = [...isAllCars];
+    array.push(object);
+    console.log(array);
+    setAllCars(array);
+  };
 
   return (
     <div className="App">
       <header>Car Datas</header>
       <section>
-        {isFormOpen && <FormComponent />}
+        {isFormOpen && <FormComponent addNewCar={addNewCar} />}
 
         <article>
           <div onClick={() => setFormOpen(!isFormOpen)}>Open Form</div>
